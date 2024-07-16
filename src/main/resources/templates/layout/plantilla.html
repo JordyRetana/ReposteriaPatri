@@ -23,9 +23,8 @@
                 max-height: 70px; 
             }
             .logo {
-                max-height: 110px; 
-                                margin-top: 10px; /* Agrega un margen superior para bajar la imagen */
-
+                max-height: 150px; 
+                margin-top: 40px; /* Agrega un margen superior para bajar la imagen */
             }
             .navbar-brand {
                 display: flex;
@@ -53,13 +52,13 @@
                 <div class="container d-flex justify-content-between align-items-center">
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Inicio</a>
+                            <a class="nav-link" th:href="@{/categoria/listado}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Productos</a>
+                            <a class="nav-link" href="">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Galería</a>
+                            <a class="nav-link" th:href="@{/galeria/listado}">Galería</a>
                         </li>
                     </ul>
                     <a class="navbar-brand mx-3" href="/">
@@ -68,10 +67,9 @@
 
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Preguntas</a>
+                            <a class="nav-link" th:href="@{/comentarios/listado}">Preguntas</a>
                         </li>
                         <li class="nav-item">
-                            
                             <a class="nav-link" th:href="@{/contacto/listado}">Contacto</a>
                         </li>
                         <li class="nav-item">
@@ -80,11 +78,14 @@
                     </ul>
                 </div>
             </nav>
+        </header>
 
+        <div th:fragment="content"></div>
 
-        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
+        <footer th:fragment="footer" class="mt-5 p-2" style="background-color: #f8c1d4; color: white;">
             <div class="container">
                 <div class="col">
+                    
                     <p class="lead text-center">
                         &COPY; DERECHOS RESERVADOS
                     </p>

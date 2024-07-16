@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Mi primera página dinámica
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>                
+        <!-- Agrega los enlaces a Bootstrap CSS aquí -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        
+        <section th:fragment="galeria" class="py-4 mb-4 bg-light">
+ <section class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Dama Blanca">
+                        <h5 class="mt-2">DAMA BLANCA</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Muselina de Fresas">
+                        <h5 class="mt-2">MUSELINA DE FRESAS</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Bizcocho Negro">
+                        <h5 class="mt-2">BIZCOCHO NEGRO</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Red Velvet">
+                        <h5 class="mt-2">RED VELVET</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Amaretto">
+                        <h5 class="mt-2">AMARETTO</h5>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Cheesecake de Fresa">
+                        <h5 class="mt-2">CHEESECAKE DE FRESA</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Agrega el script de Bootstrap JS aquí -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
