@@ -1,20 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.reposteria_patri.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author Jordy
- */
 @Controller
-
+@RequestMapping("/galeria")
 public class GaleriaController {
-           @GetMapping("/galeria/listado")
+    
+    @GetMapping("/listado")
     public String mostrarListadogaleria() {
         return "galeria/listado";
     }

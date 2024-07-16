@@ -4,14 +4,14 @@
  */
 package com.reposteria_patri.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author Jordy
- */
+@Controller
+@RequestMapping("/comentarios")
 public class ComentariosController {
-       @GetMapping("/comentarios/listado")
+    @GetMapping("/listado")
     public String mostrarListadoComentarios() {
         return "comentarios/listado";
     }
