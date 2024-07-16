@@ -30,6 +30,14 @@
                 display: flex;
                 align-items: center;
             }
+                 footer {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    height: 50px; /* Adjust footer height as desired */
+                    background-color: #f8c1d4;
+                    color: white;
+                  }
         </style>
     </head>
     <body>
@@ -62,7 +70,7 @@
                         </li>
                     </ul>
                     <a class="navbar-brand mx-3" href="/">
-                        <img src="img/LOGORepo.png" alt="Logo" class="logo">
+                        <img th:src="@{/img/LOGORepo.png}" alt="Logo" class="logo">
                     </a>
 
                     <ul class="navbar-nav flex-row">
