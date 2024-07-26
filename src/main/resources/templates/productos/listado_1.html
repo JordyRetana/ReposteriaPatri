@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<!-- Mi primera página html-->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Repostería Patri</title>
+        <title>Listado - Repostería Patri</title>
         <meta charset="UTF-8"/>                
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         
-        <section th:replace="~{galeria/fragmentos :: galeria}"/>
-
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+        <section th:replace="~{productos/fragmentos :: postres}"></section>
         
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
