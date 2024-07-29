@@ -53,14 +53,18 @@
                 right: auto; 
                 bottom: 50%; 
                 color: #264653;
+                background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con opacidad */
+                padding: 10px;
+                border-radius: 8px; /* Bordes redondeados */
+                font-weight: bold; /* Texto en negrita */
             }
-            .text-right{
+            .text-right {
                 left: auto; 
                 right: 15%; 
                 transform: translateY(50%); 
                 text-align: right; 
             }
-            .text-left{
+            .text-left {
                 left: 15%; 
                 right: auto; 
                 transform: translateY(50%); 
@@ -94,11 +98,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{menu.productos}]]</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item"  th:href="@{/productos/listado}">[[#{productos.tortasypostres}]]</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/listado}">[[#{productos.tortasypostres}]]</a></li>
                                 <li><a class="dropdown-item" href="">[[#{productos.panaderia}]]</a></li>
                             </ul>
                         </li>
-
 
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/galeria/listado}">[[#{menu.galeria}]]</a>
@@ -124,7 +127,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{menu.idioma}]]</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
+                                <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
                                 <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                             </ul>
                         </li>
@@ -167,7 +170,6 @@
             </div>
         </section>
 
-        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
