@@ -1,76 +1,89 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Repostería Patri</title>
-        <meta charset="UTF-8"/>                
-        <!-- Agrega los enlaces a Bootstrap CSS aquí -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    </head>
-    <body>
-        
-        <section th:fragment="opinion" class="py-4 mb-4 bg-light">
-            <div class="container">
-                <h2 class="text-center mb-4">Testimonios sobre Repostería</h2>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 1"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Ana Gómez</h5>
-                                <p class="card-text">"Los pasteles de esta pastelería son los más deliciosos que he probado. ¡Siempre vuelvo por más!"</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 2"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Luis Fernández</h5>
-                                <p class="card-text">"Cada bocado es una explosión de sabor. Los postres son simplemente exquisitos."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 3"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">María Rodríguez</h5>
-                                <p class="card-text">"La atención es increíble y los pasteles son perfectos para cualquier ocasión. ¡Altamente recomendado!"</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 4"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Carlos Martínez</h5>
-                                <p class="card-text">"Cada pastel es una obra de arte. Me encanta cómo combinan los sabores."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 5"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Sofía López</h5>
-                                <p class="card-text">"Un lugar encantador con los postres más ricos. Cada visita es una experiencia dulce."</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle" alt="Persona 6"></img>
-                            <div class="card-body text-center">
-                                <h5 class="card-title">Juan Pérez</h5>
-                                <p class="card-text">"Los mejores postres de la ciudad. La calidad y el sabor son incomparables."</p>
-                            </div>
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Repostería Patri</title>
+    <meta charset="UTF-8"/>                
+    <!-- Agrega los enlaces a Bootstrap CSS aquí -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .card-custom {
+            height: 300px; /* Ajusta según la altura que desees */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .card-custom .card-img-top {
+            height: 150px; /* Ajusta según la altura de la imagen que desees */
+            object-fit: cover;
+        }
+
+        .card-custom .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section th:fragment="opinion" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Testimonios sobre Repostería</h2>
+            <div class="row">
+                <div th:each="pregunta : ${preguntas}" class="col-md-4 mb-4">
+                    <div class="card card-custom" style="width: 18rem;">
+                        <img th:src="${pregunta.imagen}" class="card-img-top rounded-circle" alt="Persona"></img>
+                        <div class="card-body text-center">
+                            <h5 class="card-title" th:text="${pregunta.nombre + ' ' + pregunta.apellido}">Nombre Apellido</h5>
+                            <p class="card-text" th:text="${pregunta.comentario}">Comentario</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="text-center mt-4">
+                <button id="toggleFormBtn" class="btn btn-primary">Agregar Testimonio</button>
+            </div>
+            <div id="formContainer" class="hidden mt-4">
+                <h3 class="text-center mb-4">Agregar Nuevo Testimonio</h3>
+                    <form th:action="@{/comentarios/submitTestimonio}" th:method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comentario" class="form-label">Comentario</label>
+                        <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imagen" class="form-label">Subir Imagen</label>
+                        <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </form>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('toggleFormBtn').addEventListener('click', function() {
+            var formContainer = document.getElementById('formContainer');
+            formContainer.classList.toggle('hidden');
+        });
+    </script>
+</body>
 </html>
