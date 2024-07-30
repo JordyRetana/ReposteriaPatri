@@ -35,42 +35,42 @@
 <body>
     <section th:fragment="opinion" class="py-4 mb-4 bg-light">
         <div class="container">
-            <h2 class="text-center mb-4">Testimonios sobre Repostería</h2>
+            <h2 class="text-center mb-4">[[#{testimonio.reposteria}]]</h2>
             <div class="row">
                 <div th:each="pregunta : ${preguntas}" class="col-md-4 mb-4">
                     <div class="card card-custom" style="width: 18rem;">
                         <img th:src="${pregunta.imagen}" class="card-img-top rounded-circle" alt="Persona"></img>
                         <div class="card-body text-center">
                             <h5 class="card-title" th:text="${pregunta.nombre + ' ' + pregunta.apellido}">Nombre Apellido</h5>
-                            <p class="card-text" th:text="${pregunta.comentario}">Comentario</p>
+                            <p class="card-text" th:text="${pregunta.comentario}">[[#{contacto.comentario}]]</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-4">
-                <button id="toggleFormBtn" class="btn btn-primary">Agregar Testimonio</button>
+                <button id="toggleFormBtn" class="btn btn-primary">[[#{opinion.agregar}]]</button>
             </div>
             <div id="formContainer" class="hidden mt-4">
-                <h3 class="text-center mb-4">Agregar Nuevo Testimonio</h3>
+                <h3 class="text-center mb-4">[[#{opinion.nuevotestimonio}]]</h3>
                     <form th:action="@{/comentarios/submitTestimonio}" th:method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label">[[#{contacto.nombre}]]</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
                     </div>
                     <div class="mb-3">
-                        <label for="apellido" class="form-label">Apellido</label>
+                        <label for="apellido" class="form-label">[[#{contacto.apellido}]]</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" required>
                     </div>
                     <div class="mb-3">
-                        <label for="comentario" class="form-label">Comentario</label>
+                        <label for="comentario" class="form-label">[[#{contacto.comentario}]]</label>
                         <textarea class="form-control" id="comentario" name="comentario" rows="3" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="imagen" class="form-label">Subir Imagen</label>
+                        <label for="imagen" class="form-label">[[#{producto.imagen}]]</label>
                         <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <button type="submit" class="btn btn-success">[[#{opinion.enviar}]]</button>
                     </div>
                 </form>
 

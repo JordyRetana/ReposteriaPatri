@@ -11,71 +11,72 @@
         <!-- Formulario de contacto -->
         <form class="row g-3" th:action="@{/contacto/guardar}" th:object="${contacto}" method="post">
             <div class="col-md-4">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <label for="nombre" class="form-label">[[#{contacto.nombre}]]</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required="true"></input>
             </div>
             <div class="col-md-4">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+                <label for="apellido" class="form-label">[[#{contacto.apellido}]]</label>
+                <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required="true"></input>
             </div>
             <div class="col-md-4">
-                <label for="username" class="form-label">Nombre de Usuario</label>
+                <label for="username" class="form-label">[[#{contacto.usuario}]]</label>
                 <div class="input-group">
                     <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                    <input type="text" class="form-control" id="username" th:field="*{username}" aria-describedby="inputGroupPrepend2" required>
+                    <input type="text" class="form-control" id="username" th:field="*{username}" aria-describedby="inputGroupPrepend2" required="true"></input>
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="city" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="city" th:field="*{city}" required>
+                <label for="city" class="form-label">[[#{contacto.ciudad}]]</label>
+                <input type="text" class="form-control" id="city" th:field="*{city}" required="true"></input>
             </div>
                 <div class="col-md-3">
-                <label for="state" class="form-label">Estado</label>
-                <select class="form-select" id="state" th:field="*{state}" required>
+                <label for="state" class="form-label">[[#{contacto.estado}]]</label>
+                <select class="form-select" id="state" th:field="*{state}" required="true">
                     <option selected disabled value="">Elegir...</option>
-                    <option value="US">Estados Unidos</option>
-                    <option value="CA">Canadá</option>
-                    <option value="MX">México</option>
-                    <option value="GB">Reino Unido</option>
-                    <option value="FR">Francia</option>
-                    <option value="DE">Alemania</option>
-                    <option value="IT">Italia</option>
-                    <option value="ES">España</option>
-                    <option value="BR">Brasil</option>
-                    <option value="AR">Argentina</option>
-                    <option value="AU">Australia</option>
-                    <option value="CN">China</option>
-                    <option value="JP">Japón</option>
-                    <option value="IN">India</option>
-                    <option value="ZA">Sudáfrica</option>
+                    <option value="US">[[#{pais.usa}]]</option>
+                    <option value="CA">[[#{pais.ca}]]</option>
+                    <option value="CR">[[#{pais.cr}]]</option>
+                    <option value="MX">[[#{pais.mx}]]</option>
+                    <option value="UK">[[#{pais.uk}]]</option>
+                    <option value="FR">[[#{pais.fr}]]</option>
+                    <option value="DE">[[#{pais.de}]]</option>
+                    <option value="IT">[[#{pais.it}]]</option>
+                    <option value="ES">[[#{pais.es}]]</option>
+                    <option value="BR">[[#{pais.br}]]</option>
+                    <option value="AR">[[#{pais.ar}]]</option>
+                    <option value="AU">[[#{pais.au}]]</option>
+                    <option value="CN">[[#{pais.cn}]]</option>
+                    <option value="JP">[[#{pais.jp}]]</option>
+                    <option value="IN">[[#{pais.in}]]</option>
+                    <option value="ZA">[[#{pais.za}]]</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="zip" class="form-label">Código Postal</label>
+                <label for="zip" class="form-label">[[#{contacto.codigopostal}]]</label>
                 <input type="text" class="form-control" id="zip" th:field="*{zip}" required>
             </div>
             <div class="col-md-6">
-                <label for="correo" class="form-label">Correo Electrónico</label>
+                <label for="correo" class="form-label">[[#{contacto.correo}]]</label>
                 <input type="email" class="form-control" id="correo" th:field="*{correo}" required>
             </div>
             <div class="col-md-6">
-                <label for="telefono" class="form-label">Teléfono</label>
+                <label for="telefono" class="form-label">[[#{contacto.telefono}]]</label>
                 <input type="tel" class="form-control" id="telefono" th:field="*{telefono}" required>
             </div>
             <div class="col-12">
-                <label for="mensaje" class="form-label">Mensaje</label>
+                <label for="mensaje" class="form-label">[[#{contacto.mensaje}]]</label>
                 <textarea class="form-control" id="mensaje" th:field="*{mensaje}" rows="4" required></textarea>
             </div>
             <div class="col-12">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
                     <label class="form-check-label" for="invalidCheck2">
-                        Acepto los términos y condiciones
+                        [[#{terminos.aceptar}]]
                     </label>
                 </div>
             </div>
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Enviar</button>
+                <button class="btn btn-primary" type="submit">[[#{opinion.enviar}]]</button>
             </div>
         </form>
     </section>

@@ -44,14 +44,14 @@
             }
             .carousel-bg {
                 height: 50vh;
-                background-size: cover; 
+                background-size: cover;
                 background-position: center;
                 opacity: 85%;
             }
             .carousel-caption {
                 left: auto;
-                right: auto; 
-                bottom: 50%; 
+                right: auto;
+                bottom: 50%;
                 color: #264653;
                 background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con opacidad */
                 padding: 10px;
@@ -59,17 +59,30 @@
                 font-weight: bold; /* Texto en negrita */
             }
             .text-right {
-                left: auto; 
-                right: 15%; 
-                transform: translateY(50%); 
-                text-align: right; 
+                left: auto;
+                right: 15%;
+                transform: translateY(50%);
+                text-align: right;
             }
             .text-left {
-                left: 15%; 
-                right: auto; 
-                transform: translateY(50%); 
-                text-align: left; 
+                left: 15%;
+                right: auto;
+                transform: translateY(50%);
+                text-align: left;
             }
+            .section-separator { 
+                padding: 10px 10px; 
+                margin-bottom: 25px; 
+                text-align: center; 
+                background-color: #bde0fe; 
+                border-radius: 30px 30px 0 0; 
+            } 
+            .section-separator p { 
+                margin: 0; 
+                font-size: 1.5rem; 
+                font-weight: bold; 
+                color: #6c757d; }
+            
         </style>
     </head>
     <body>
@@ -169,7 +182,11 @@
                 </button>
             </div>
         </section>
-
+        
+            <section th:fragment="titulo-producto" class="section-separator">
+                <p class="section-separator">[[#{texto.index}]]</p>
+            </section>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
