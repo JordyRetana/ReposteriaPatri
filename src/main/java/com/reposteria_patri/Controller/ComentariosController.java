@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 
@@ -30,31 +33,37 @@ public class ComentariosController {
         return "comentarios/listado";
     }
 
-@PostMapping("/submitTestimonio")
-public String submitTestimonio(@RequestParam("nombre") String nombre,
-                               @RequestParam("apellido") String apellido,
-                               @RequestParam("comentario") String comentario,
-                               @RequestParam("imagen") MultipartFile imagen,
-                               Model model) {
-    try {
-        Preguntas preguntas = new Preguntas();
-        preguntas.setNombre(nombre);
-        preguntas.setApellido(apellido);
-        preguntas.setComentario(comentario);
+    @PostMapping("/submitTestimonio")
+    public String submitTestimonio(@RequestParam("nombre") String nombre,
+                                   @RequestParam("apellido") String apellido,
+                                   @RequestParam("comentario") String comentario,
+                                   @RequestParam("imagen") MultipartFile imagen,
+                                   Model model) {
+        try {
+            Preguntas preguntas = new Preguntas();
+            preguntas.setNombre(nombre);
+            preguntas.setApellido(apellido);
+            preguntas.setComentario(comentario);
 
-        if (!imagen.isEmpty()) {
-            // Convertir la imagen a una cadena Base64
-            String base64Image = Base64.getEncoder().encodeToString(imagen.getBytes());
-            // Asignar la cadena Base64 a la propiedad de la imagen
-            preguntas.setImagen(base64Image);
+            if (!imagen.isEmpty()) {
+                // Almacenar la imagen en el sistema de archivos
+                String fileName = System.currentTimeMillis() + "_" + imagen.getOriginalFilename();
+                Path imagePath = Paths.get("uploads/" + fileName);
+                Files.createDirectories(imagePath.getParent());
+                Files.write(imagePath, imagen.getBytes());
+
+                // Guardar la ruta de la imagen en la base de datos
+                preguntas.setImagen("/uploads/" + fileName);
+            }
+
+            // Guardar el testimonio
+            preguntasService.savePreguntas(preguntas);
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("error", "Ocurrió un error al subir la imagen. Por favor, inténtalo de nuevo.");
+            return "comentarios/formulario";
         }
-        // Guardar el testimonio
-        preguntasService.savePreguntas(preguntas);
-    } catch (IOException e) {
-        e.printStackTrace();
+        return "redirect:/comentarios/listado";
     }
-    return "redirect:/comentarios/listado";
-}
-
 
 }
