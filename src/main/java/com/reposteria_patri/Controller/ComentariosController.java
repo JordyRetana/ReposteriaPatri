@@ -46,17 +46,14 @@ public class ComentariosController {
             preguntas.setComentario(comentario);
 
             if (!imagen.isEmpty()) {
-                // Almacenar la imagen en el sistema de archivos
                 String fileName = System.currentTimeMillis() + "_" + imagen.getOriginalFilename();
                 Path imagePath = Paths.get("uploads/" + fileName);
                 Files.createDirectories(imagePath.getParent());
                 Files.write(imagePath, imagen.getBytes());
 
-                // Guardar la ruta de la imagen en la base de datos
                 preguntas.setImagen("/uploads/" + fileName);
             }
 
-            // Guardar el testimonio
             preguntasService.savePreguntas(preguntas);
         } catch (IOException e) {
             e.printStackTrace();

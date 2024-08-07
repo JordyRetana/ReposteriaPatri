@@ -2,44 +2,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Repostería Patri</title>
+        <title>Galería de Repostería Patri</title>
         <meta charset="UTF-8"/>                
         <!-- Agrega los enlaces a Bootstrap CSS aquí -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .img-container {
+                width: 150px; /* Ajusta el tamaño del contenedor según sea necesario */
+                height: 150px; /* Asegúrate de que el contenedor sea cuadrado */
+                overflow: hidden; /* Oculta las partes de la imagen que sobresalen */
+                border-radius: 50%; /* Bordes redondeados para hacer la imagen circular */
+                display: flex; /* Centra la imagen dentro del contenedor */
+                align-items: center;
+                justify-content: center;
+                background-color: #f8f9fa; /* Color de fondo opcional */
+                margin: auto; /* Centra el contenedor en su contenedor padre */
+            }
+            .img-circle {
+                width: 100%; /* La imagen ocupa el 100% del ancho del contenedor */
+                height: 100%; /* La imagen ocupa el 100% del alto del contenedor */
+                object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+                border-radius: 500%; /* Asegura que la imagen sea circular */
+            }
+        </style>
     </head>
     <body>
         
         <section th:fragment="galeria" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row text-center">
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Dama Blanca"> </img>
-                        <h5 class="mt-2">DAMA BLANCA</h5>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Muselina de Fresas"></img>
-                        <h5 class="mt-2">MUSELINA DE FRESAS</h5>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Bizcocho Negro"></img>
-                        <h5 class="mt-2">BIZCOCHO NEGRO</h5>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Red Velvet"></img>
-                        <h5 class="mt-2">RED VELVET</h5>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Amaretto"></img>
-                        <h5 class="mt-2">AMARETTO</h5>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <img src="https://via.placeholder.com/150" class="rounded img-fluid" alt="Cheesecake de Fresa"></img>
-                        <h5 class="mt-2">CHEESECAKE DE FRESA</h5>
+                    <div th:each="imagen : ${imagenes}" class="col-md-4 mb-4">
+                        <div class="img-container">
+                            <img th:src="${imagen.imagen}" class="img-circle img-fluid rounded mx-auto d-block" alt="Imagen de Repostería"/>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
 
         <!-- Agrega el script de Bootstrap JS aquí -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
