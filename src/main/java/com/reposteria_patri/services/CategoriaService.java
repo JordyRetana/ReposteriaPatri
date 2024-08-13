@@ -15,6 +15,6 @@ public interface CategoriaService {
     //solo las activas o todas
     public Categoria getCategorias(Categoria categoria);
     
-    
+
     
 }

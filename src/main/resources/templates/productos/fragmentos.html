@@ -50,8 +50,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </style>
     </head>
     <body>
-        
-        <section th:fragment="postres" class="bg-light">
+
+        <section th:fragment="productos" class="bg-light">
             <div class="row row-cols-3"> <!-- Tres columnas en la fila -->
                 <div class="col mb-3 card-container" th:each="p : ${productos}"> <!-- Margen inferior y contenedor de tarjetas -->
                     <div class="card card-style">
@@ -69,5 +69,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </section>
+
+        <section th:fragment="tortasypostres" class="bg-light">
+            <div>
+                <h2 class="align-items-center">[[#{productos.tortasypostres}]]</h2>
+            </div>
+            <div class="row row-cols-3"> <!-- Tres columnas en la fila -->
+                <div class="col mb-3 card-container" th:each="p : ${productos}"> <!-- Margen inferior y contenedor de tarjetas -->
+                    <div class="card card-style">
+                        <img th:src="${p.imagen}"
+                             alt="alt"
+                             class="card-img-top"/> <!-- Imagen de la tarjeta -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h4>[[${p.nombre}]]</h4>
+                            </div>                    
+                            <p>₡ [[${p.precio}]]</p>
+                            <button type="button" class="btn btn-outline-light">[[#{carrito.agregar}]]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section th:fragment="panaderia" class="bg-light">
+            <div>
+                <h2 class="align-items-center">[[#{productos.panaderia}]]</h2>
+            </div>
+            <div class="row row-cols-3"> <!-- Tres columnas en la fila -->
+                <div class="col mb-3 card-container" th:each="p : ${productos}"> <!-- Margen inferior y contenedor de tarjetas -->
+                    <div class="card card-style">
+                        <img th:src="${p.imagen}"
+                             alt="alt"
+                             class="card-img-top"/> <!-- Imagen de la tarjeta -->
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h4>[[${p.nombre}]]</h4>
+                            </div>                    
+                            <p>₡ [[${p.precio}]]</p>
+                            <button type="button" class="btn btn-outline-light">[[#{carrito.agregar}]]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </body>
 </html>

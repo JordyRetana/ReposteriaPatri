@@ -1,5 +1,6 @@
 package com.reposteria_patri.Controller;
 
+import com.reposteria_patri.domain.Producto;
 import com.reposteria_patri.services.CategoriaService;
 import com.reposteria_patri.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,39 @@ public class ProductoController {
         model.addAttribute("categorias",categorias);
         
         return "productos/listado";
+    }
+    
+    @GetMapping("/eliminar/{idProducto}")
+    public String eliminar(Producto producto){
+        productoService.delete(producto); 
+        return "redirect:/producto/listado";        
+    }
+    
+    
+    @GetMapping("/modificar/{idProducto}")
+    public String modifica(Producto producto, Model model){
+        producto = productoService.getProductos(producto);
+        model.addAttribute("producto", producto); 
+        var categorias = categoriaService.getCategorias();
+        model.addAttribute("categorias",categorias);
+        return "/producto/modifica";        
+    }
+    
+    @GetMapping("/listadoTortasPostres")
+    public String listadoTortas(Model model){
+        var productos = productoService.getProductos().stream()
+                .filter(producto ->producto.getCategoria().getIdCategoria()==1)
+                .toList();
+        model.addAttribute("productos", productos);
+        return "productos/listado";
+    }
+    
+    @GetMapping("/listadoPanaderia")
+    public String listadoPanaderia(Model model){
+        var productos = productoService.getProductos().stream()
+                .filter(producto ->producto.getCategoria().getIdCategoria()==2)
+                .toList();
+        model.addAttribute("productos", productos);
+        return "productos/listado_1";
     }
 }
