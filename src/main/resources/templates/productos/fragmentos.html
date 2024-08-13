@@ -63,7 +63,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <h4>[[${p.nombre}]]</h4>
                             </div>                    
                             <p>₡ [[${p.precio}]]</p>
-                            <button type="button" class="btn btn-outline-light">[[#{carrito.agregar}]]</button>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-outline-success">[[#{carrito.agregar}]]</a>
+                                <a th:href="@{/productos/detalles/{idProducto}(idProducto=${p.idProducto})}" 
+                                   class="btn btn-outline-info">[[#{producto.detalles}]]</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +95,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </section>
-        
+
         <section th:fragment="panaderia" class="bg-light">
             <div>
                 <h2 class="align-items-center">[[#{productos.panaderia}]]</h2>
@@ -113,6 +117,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </section>
-        
+
     </body>
 </html>

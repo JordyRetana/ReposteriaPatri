@@ -22,4 +22,6 @@ public interface ProductoService {
     
     //Se elimina el registro en la tabla de producto si el idProducto  del objeto existe en la tabla
     public void delete(Producto producto);
+    
+    public Producto consultaProducto(Long idProducto);
 }
