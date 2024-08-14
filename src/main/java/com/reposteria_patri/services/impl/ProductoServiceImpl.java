@@ -39,4 +39,9 @@ public class ProductoServiceImpl implements ProductoService{
         productoDao.delete(producto);
     }
     
+    @Override
+    public Producto consultaProducto(Long idProducto){
+        return productoDao.findById(idProducto).orElse(null);
+    }
+    
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -64,5 +65,12 @@ public class ProductoController {
                 .toList();
         model.addAttribute("productos", productos);
         return "productos/listado_1";
+    }
+    
+    @GetMapping("detalles/{idProducto}")
+    public String detallesProducto(@PathVariable("idProducto") Long idProducto,Model model){
+        Producto producto = productoService.consultaProducto(idProducto);
+        model.addAttribute("productos", producto);
+        return "productos/listado_2";
     }
 }
