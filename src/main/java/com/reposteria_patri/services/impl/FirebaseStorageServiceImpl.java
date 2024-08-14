@@ -44,18 +44,35 @@ public class FirebaseStorageServiceImpl implements FirebaseStorageService{
         }
     }
 
-    private String uploadFile(File file, String carpeta, String fileName) throws IOException {
-        //Se define el lugar y acceso al archivo .jasper
-        ClassPathResource json = new ClassPathResource(rutaJsonFile + File.separator + archivoJsonFile);
-        BlobId blobId = BlobId.of(BucketName, rutaSuperiorStorage + "/" + carpeta + "/" + fileName);
-        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
-        
-        Credentials credentials = GoogleCredentials.fromStream(json.getInputStream());
-        Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+private String uploadFile(File file, String carpeta, String fileName) throws IOException {
+    // Define la ubicación del archivo de credenciales
+    ClassPathResource json = new ClassPathResource(rutaJsonFile + File.separator + archivoJsonFile);
+    BlobId blobId = BlobId.of(BucketName, rutaSuperiorStorage + "/" + carpeta + "/" + fileName);
+    BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("image/jpeg").build(); // Asume imagen JPEG, ajusta según el tipo de archivo
+
+    // Obtén las credenciales y el servicio de almacenamiento
+    Credentials credentials = GoogleCredentials.fromStream(json.getInputStream());
+    Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+
+    // Carga el archivo
+    try {
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
-        String url = storage.signUrl(blobInfo, 3650, TimeUnit.DAYS, SignUrlOption.signWith((ServiceAccountSigner) credentials)).toString();
-        return url;
+    } catch (StorageException e) {
+        System.err.println("Error cargando el archivo a Firebase Storage: " + e.getMessage());
+        throw e; // Vuelve a lanzar la excepción para que pueda ser manejada más arriba
     }
+
+    // Genera la URL de firma
+    String url;
+    try {
+        url = storage.signUrl(blobInfo, 3650, TimeUnit.DAYS, SignUrlOption.signWith((ServiceAccountSigner) credentials)).toString();
+    } catch (Exception e) {
+        System.err.println("Error generando la URL de firma: " + e.getMessage());
+        throw e;
+    }
+
+    return url;
+}
 
     //Método utilitario que convierte el archivo desde el equipo local del usuario a un archivo temporal en el servidor
     private File convertToFile(MultipartFile archivoLocalCliente) throws IOException {

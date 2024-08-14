@@ -4,13 +4,13 @@
  */
 package com.reposteria_patri.dao;
 
-import com.reposteria_patri.domain.Preguntas;
+import com.reposteria_patri.domain.Comentarios;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Jordy
  */
-public interface PreguntasDao extends JpaRepository<Preguntas, Long> {
+public interface ComentariosDao extends JpaRepository<Comentarios, Long> {
     
 }

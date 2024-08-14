@@ -4,19 +4,20 @@ package com.reposteria_patri.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
-@Data //sets y gets 
+@Data 
 @Entity
-@Table(name="preguntas") //nombrar la tabla
-    
-public class Preguntas {
+@Table(name="comentarios") 
+public class Comentarios {
       
-    @Id //indicar que el siguiente atributo es la llave primaria
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idClientePreguntas")
     private Long idClientePreguntas; 
+
     private String nombre;
     private String apellido;
     private String comentario;
+
+    // Este campo se usa para almacenar la URL de la imagen
     private String imagen;
 }
