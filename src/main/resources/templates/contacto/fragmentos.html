@@ -9,6 +9,8 @@
 <body>
     <section th:fragment="formulario" class="py-4 mb-4 bg-light">
         <!-- Formulario de contacto -->
+        <h2 class="text-center">Formulario de Contacto</h2>
+
         <form class="row g-3" th:action="@{/contacto/guardar}" th:object="${contacto}" method="post">
             <div class="col-md-4">
                 <label for="nombre" class="form-label">[[#{contacto.nombre}]]</label>
@@ -79,6 +81,11 @@
                 <button class="btn btn-primary" type="submit">[[#{opinion.enviar}]]</button>
             </div>
         </form>
+    </section>
+    <section th:fragment="mapa" class="py-4 mb-4 bg-light text-center">
+        <h2>Ubicación de Repostería Patri</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12828.022692645158!2d-84.15826538564845!3d9.92691043721719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1723933346839!5m2!1ses!2scr" 
+        width="1870" height="800" style="border:1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
