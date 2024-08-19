@@ -67,6 +67,10 @@
                 justify-content: center;
                 margin: 20px 0;
             }
+            .linea-hr{
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
         </style>
     </head>
     <body>
@@ -82,7 +86,7 @@
                             <div class="card-header">
                                 <h4>[[${p.nombre}]]</h4>
                             </div>                    
-                            <p>₡ [[${p.precio}]]</p>
+                            <p>₡ [[${p.precio}]] ([[${p.existencias}]])</p>
                             <div class="btn-group">
                                 <a href="#" class="btn btn-outline-success">[[#{carrito.agregar}]]</a>
                                 <a th:href="@{/productos/detalles/{idProducto}(idProducto=${p.idProducto})}" 
@@ -95,7 +99,7 @@
         </section>
 
         <section th:fragment="tortasypostres" class="bg-light">
-         <div class="section-header">
+            <div class="section-header">
                 <h2 style="text-align: center; background-color: rgba(255, 192, 203, 0.8); padding: 10px; border-radius: 10px; margin: 40px 0 20px; width: 100%;">[[#{productos.tortasypostres}]]</h2>
             </div>
             <div class="row row-cols-3">
@@ -108,8 +112,12 @@
                             <div class="card-header">
                                 <h4>[[${p.nombre}]]</h4>
                             </div>                    
-                            <p>₡ [[${p.precio}]]</p>
-                            <button type="button" class="btn btn-outline-light">[[#{carrito.agregar}]]</button>
+                            <p>₡ [[${p.precio}]] ([[${p.existencias}]])</p>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-outline-success">[[#{carrito.agregar}]]</a>
+                                <a th:href="@{/productos/detalles/{idProducto}(idProducto=${p.idProducto})}" 
+                                   class="btn btn-outline-info">[[#{producto.detalles}]]</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,13 +138,45 @@
                             <div class="card-header">
                                 <h4>[[${p.nombre}]]</h4>
                             </div>                    
-                            <p>₡ [[${p.precio}]]</p>
-                            <button type="button" class="btn btn-outline-light">[[#{carrito.agregar}]]</button>
+                            <p>₡ [[${p.precio}]] ([[${p.existencias}]])</p>
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-outline-success">[[#{carrito.agregar}]]</a>
+                                <a th:href="@{/productos/detalles/{idProducto}(idProducto=${p.idProducto})}" 
+                                   class="btn btn-outline-info">[[#{producto.detalles}]]</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+        <section th:fragment="vistaProducto" class="bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img th:src="${producto.imagen}"
+                             alt="alt"
+                             class="img-fluid"/>
+                    </div>
+                    <div class="col-md-4">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a th:href="@{/}">[[#{menu.inicio}]]</a></li>
+                                <li class="breadcrumb-item"><a th:href="@{/}">[[#{menu.productos}]]</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" th:text="${producto.nombre}">aa</li>
+                            </ol>
+                        </nav>
+                        <h2 class="section-title" th:text="${producto.nombre}">name</h2>
+                        <p th:text="${producto.descripcion}">descript</p>
+                        <p><strong>[[#{producto.precio}]]: ₡</strong><span th:text="${producto.precio} 
+                                                                           + ' (' + (${producto.existencias}) +') '"></span></p>
+                        <hr class="linea-hr"/>
+                        <a href="#" class="btn btn-outline-success w-100">[[#{carrito.agregar}]]</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </body>
 </html>

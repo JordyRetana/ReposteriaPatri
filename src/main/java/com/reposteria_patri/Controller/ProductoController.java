@@ -70,7 +70,7 @@ public class ProductoController {
     @GetMapping("detalles/{idProducto}")
     public String detallesProducto(@PathVariable("idProducto") Long idProducto,Model model){
         Producto producto = productoService.consultaProducto(idProducto);
-        model.addAttribute("productos", producto);
+        model.addAttribute("producto", producto);
         return "productos/listado_2";
     }
 }
