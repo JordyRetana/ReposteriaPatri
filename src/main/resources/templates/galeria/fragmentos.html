@@ -24,11 +24,28 @@
                 object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
                 border-radius: 500%; /* Asegura que la imagen sea circular */
             }
+            .section-header {
+                display: flex;
+                justify-content: center;
+                margin: 40px 0 20px;
+            }
+
+            .section-title {
+                text-align: center;
+                background-color: rgba(255, 192, 203, 0.8);
+                padding: 10px;
+                border-radius: 10px;
+                width: 100%;
+            }
         </style>
     </head>
     <body>
         
         <section th:fragment="galeria" class="py-4 mb-4 bg-light">
+            <div class="section-header">
+                <h2 style="text-align: center; background-color: rgba(255, 192, 203, 0.8); padding: 10px; border-radius: 10px; margin: 40px 0 20px; width: 100%;">Galería de Repostería</h2>
+            </div>
+            
             <div class="container">
                 <div class="row text-center">
                     <div th:each="imagen : ${imagenes}" class="col-md-4 mb-4">
