@@ -14,11 +14,11 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data //sets y gets 
+@Data 
 @Entity
 @Table(name="producto")
 public class Producto {
-    @Id //indicar que el siguiente atributo es la llave primaria
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_producto")
     private long idProducto;

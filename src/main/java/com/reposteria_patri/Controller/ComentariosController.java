@@ -34,23 +34,18 @@ public class ComentariosController {
 public String submitTestimonio(Comentarios comentarios,
                                @RequestParam("imagenFile") MultipartFile imagenFile) {
 
-    // Primero, guarda el comentario en la base de datos
     comentariosService.savePreguntas(comentarios);
 
     if (!imagenFile.isEmpty()) {
         try {
-            // Obtén el ID del comentario guardado
             Long comentarioId = comentarios.getIdClientePreguntas();
 
-            // Sube la imagen a Firebase y obtiene la URL
             String urlImagen = firebaseStorageService.cargaImagen(imagenFile, "comentarios", comentarioId);
 
-            // Actualiza el comentario con la URL de la imagen
             comentarios.setImagen(urlImagen);
             comentariosService.savePreguntas(comentarios);
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejo de errores en caso de que falle la carga de la imagen
         }
     }
     

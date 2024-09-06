@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Listado - Repostería Patri</title>
         <meta charset="UTF-8"/>                
@@ -8,6 +9,8 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         
+        <section th:replace="~{productos/fragmentos :: botonesAgregar}"></section>
+        <section th:replace="~{productos/fragmentos :: agregarProducto}"></section>
         <section th:replace="~{productos/fragmentos :: panaderia}"></section>
         
         <footer th:replace="~{layout/plantilla :: footer}"/>

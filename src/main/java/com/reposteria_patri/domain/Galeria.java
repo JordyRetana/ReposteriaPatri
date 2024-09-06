@@ -13,14 +13,14 @@ import jakarta.persistence.*;
 import java.util.List;
 import lombok.Data;
 
-@Data //sets y gets 
+@Data 
 @Entity
-@Table(name="galerias") //nombrar la tabla
+@Table(name="galerias")
 public class Galeria {
     
     private static final long serialVersionUID = 1L;
     
-    @Id //indicar que el siguiente atributo es la llave primaria
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idImagen")
     private long idImagen;

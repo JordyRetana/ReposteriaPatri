@@ -1,0 +1,30 @@
+package com.reposteria_patri.domain;
+
+import jakarta.persistence.*;
+import java.util.List;
+import lombok.Data;
+
+@Data 
+@Entity
+@Table(name="usuario") 
+public class Usuario {
+    
+    private static final long serialVersionUID = 1L;
+    
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_usuario")
+    private long idUsuario;
+    private String username;
+    private String password;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String telefono;
+    private String rutaImagen;
+    private boolean activo;
+    
+    @OneToMany
+    @JoinColumn(name="id_usuario")
+    private List<Rol> roles;
+}

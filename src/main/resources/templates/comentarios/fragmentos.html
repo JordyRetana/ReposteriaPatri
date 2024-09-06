@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <style>
             .card-custom {
-                height: 300px; /* Ajusta según la altura que desees */
+                height: 300px; 
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -12,7 +13,7 @@
             }
 
             .card-custom .card-img-top {
-                height: 150px; /* Ajusta según la altura de la imagen que desees */
+                height: 150px; 
                 object-fit: cover;
             }
 
@@ -29,7 +30,6 @@
         </style>
     </head>
     <body>
-        <!-- Fragmento de Opinión -->
         <section th:fragment="opinion" class="py-4 mb-4 bg-light">
             <div class="container">
                 <h2 class="text-center mb-4">[[#{testimonio.reposteria}]]</h2>
@@ -48,7 +48,6 @@
             </div>
         </section>
 
-        <!-- Fragmento de Agregar Testimonio -->
         <section th:fragment="agregarTestimonio" id="formSection" class="hidden mt-4">
             <div class="container">
                 <h3 class="text-center mb-4">[[#{opinion.nuevotestimonio}]]</h3>

@@ -18,6 +18,5 @@ public class Comentarios {
     private String apellido;
     private String comentario;
 
-    // Este campo se usa para almacenar la URL de la imagen
     private String imagen;
 }

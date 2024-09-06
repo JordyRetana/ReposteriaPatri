@@ -16,10 +16,10 @@ public class Contacto {
     
     private static final long serialVersionUID = 1L;
     
-    @Id //indicar que el siguiente atributo es la llave primaria
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idCliente")
-    private Long idCliente; // Anteriormente `id_comment`
+    private Long idCliente; 
 
     private String nombre;
     private String apellido;

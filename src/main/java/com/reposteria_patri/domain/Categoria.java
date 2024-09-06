@@ -11,7 +11,7 @@ public class Categoria {
     
     private static final long serialVersionUID = 1L;
     
-    @Id //indicar que el siguiente atributo es la llave primaria
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_categoria")
     private long idCategoria;
